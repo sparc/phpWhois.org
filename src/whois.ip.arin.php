@@ -77,7 +77,10 @@ class arin_handler
 			$r['AS']['handle'] = $ash;
 			unset($r['network']);			
 			}
-			
+		
+		if (isset($r['abuse']['email'])) 
+		    $r['abuse']['email'] = implode(',',$r['abuse']['email']);
+
 		return $r;
 		}
 
