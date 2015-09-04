@@ -326,18 +326,18 @@ if (!$items)
 				'Billing E-mail:' => 'billing.email',
 				
 				'Zone ID:' => 'zone.handle',
-                'Zone Organization:' => 'zone.organization',
-                'Zone Name:' => 'zone.name',
-                'Zone Address:' => 'zone.address.street.',
-                'Zone Address 2:' => 'zone.address.street.',
-                'Zone City:' => 'zone.address.city',
-                'Zone State/Province:' => 'zone.address.state',
-                'Zone Postal Code:' => 'zone.address.pcode',
-                'Zone Country:' => 'zone.address.country',
-                'Zone Phone Number:' => 'zone.phone',
-                'Zone Fax Number:' => 'zone.fax',
-                'Zone Email:' => 'zone.email'
-		            );
+				'Zone Organization:' => 'zone.organization',
+				'Zone Name:' => 'zone.name',
+				'Zone Address:' => 'zone.address.street.',
+				'Zone Address 2:' => 'zone.address.street.',
+				'Zone City:' => 'zone.address.city',
+				'Zone State/Province:' => 'zone.address.state',
+				'Zone Postal Code:' => 'zone.address.pcode',
+				'Zone Country:' => 'zone.address.country',
+				'Zone Phone Number:' => 'zone.phone',
+				'Zone Fax Number:' => 'zone.fax',
+				'Zone Email:' => 'zone.email'
+				);
 
 $r = '';
 $disok = true;
