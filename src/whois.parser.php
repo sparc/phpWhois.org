@@ -400,16 +400,10 @@ if ($vdef == '') return $value;
 
 $key = strtok($vdef,'.');
 
-if (empty($array[$key]))
-	{
-	$array[$key] = assign(array(),strtok(''),$value);
-	return $array;
-	}
-else
-	{
-	$array[$key] = assign($array[$key],strtok(''),$value);
-	return $array;
-	}
+if (empty($array[$key])) $array[$key] = array();
+
+$array[$key] = assign($array[$key],strtok(''),$value);
+return $array;
 }
 
 //-------------------------------------------------------------------------
