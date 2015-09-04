@@ -107,31 +107,31 @@ biz		neulevel.biz
 cat		dominis.cat
 coop		smile.coop nic.coop
 edu		berkeley.edu
-eu		eurid.eu
+eu			eurid.eu
 info		afilias.info
 int		who.int
-me		domain.me
+me			domain.me
 mobi		mtld.mobi
-museum		nic.museum
+museum	nic.museum
 name		peter.morgan.name
 org		example.org
 pro		registrypro.pro
 tel		nic.tel
-travel		whois.travel
+travel	whois.travel
 xxx		nic.xxx
-za.net		sex.za.net
+za.net	sex.za.net
 
 // IP whois
 
 afrinic		66.18.70.6
-apnic		218.165.121.114
-arin		207.217.120.54
+apnic			218.165.121.114
+arin			207.217.120.54
 arin+rwhois	70.84.47.210
 arin+whois	63.95.254.3
-krnic		210.178.148.129
+krnic			210.178.148.129
 lacnic		200.44.33.31
 lacnic(br)	200.165.206.74
-ripe		62.97.102.115 151.99.187.181 2001:630:d0:f111:203:93ff:fed1:f454
+ripe			62.97.102.115 151.99.187.181 2001:630:d0:f111:203:93ff:fed1:f454
 
 // ASN
 
