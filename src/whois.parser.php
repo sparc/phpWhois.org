@@ -363,11 +363,9 @@ while (list($key,$val) = each($rawdata))
 				{
 				if ($field != '')
 					{
-					//$var = '$r'.getvarname($field);
 					$itm = trim(substr($val,$pos+strlen($match)));
 
-					if ($itm!='')
-						//eval($var.'="'.str_replace('"','\"',$itm).'";');
+					if ($itm != '')
 						{
 						$var = 'r'.getvarname($field);
 						$$var = str_replace('"','\"',$itm);
