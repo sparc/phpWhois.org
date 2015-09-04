@@ -109,8 +109,7 @@ while (list($key,$val)=each($rawdata))
 		if ($k=='') continue;
 		if (strstr($k,'.'))
 			{
-			$var = 'block'.getvarname($k);
-			$$var = $v;
+			$block = assign($block, $k, $v);
 			continue;
 			}
            }
@@ -368,8 +367,7 @@ while (list($key,$val) = each($rawdata))
 
 					if ($itm != '')
 						{
-						$var = 'r'.getvarname($field);
-						$$var = str_replace('"','\"',$itm);
+						$r = assign($r,$field,str_replace('"','\"',$itm));
 						}
 					}
 
@@ -396,16 +394,22 @@ return $r;
 
 //-------------------------------------------------------------------------
 
-function getvarname ( $vdef )
+function assign ($array, $vdef, $value)
 {
-$parts = explode('.',$vdef);
-$var = '';
+if ($vdef == '') return $value;
 
-foreach($parts as $mn)
-	if ($mn == '') $var = $var.'[]';
-	else $var = $var.'["'.$mn.'"]';
+$key = strtok($vdef,'.');
 
-return $var;
+if (empty($array[$key]))
+	{
+	$array[$key] = assign(array(),strtok(''),$value);
+	return $array;
+	}
+else
+	{
+	$array[$key] = assign($array[$key],strtok(''),$value);
+	return $array;
+	}
 }
 
 //-------------------------------------------------------------------------
@@ -447,8 +451,7 @@ while (list($key,$val) = each($rawdata))
 				}
 			else
 				{
-				$var = 'r'.getvarname(strtok($field,'#'));
-				$$var = trim(substr($val,$pos+strlen($match)));
+				$r = assign($r, strtok($field,'#'), trim(substr($val,$pos+strlen($match))));
 				}
 
 			break;
@@ -517,11 +520,10 @@ while (list($key,$val) = each($rawdata))
 
 		if ($pos !== false)
 			{
-			$var = getvarname(strtok($field,'#'));
-			if ($var != '[]')
+			$var = strtok($field,'#');
+			if ($var != '')
 				{
-				$var = 'r'.$var;
-				$$var = $block;
+				$r = assign($r, $var, $block);
 				}
 			}
 		}
@@ -634,8 +636,7 @@ while (list($key,$val)=each($array))
 
 			if ($field != '' && $itm != '')
 				{
-				$var = 'r'.getvarname($field);
-				$$var = $itm;
+				$r = assign($r, $field, $itm);
 				}
 
 			$val = trim(substr($val,0,$pos));
@@ -876,5 +877,4 @@ else
 
 return sprintf("%.4d-%02d-%02d",$res['y'],$res['m'],$res['d']);
 }
-
 ?>
