@@ -109,7 +109,8 @@ while (list($key,$val)=each($rawdata))
 		if ($k=='') continue;
 		if (strstr($k,'.'))
 			{
-			eval("\$block".getvarname($k)."=\$v;");
+			$var = 'block'.getvarname($k);
+			$$var = $v;
 			continue;
 			}
            }
@@ -446,9 +447,8 @@ while (list($key,$val) = each($rawdata))
 				}
 			else
 				{
-				$var = getvarname(strtok($field,'#'));
-				$itm = trim(substr($val,$pos+strlen($match)));
-				eval('$r'.$var.'=$itm;');
+				$var = 'r'.getvarname(strtok($field,'#'));
+				$$var = trim(substr($val,$pos+strlen($match)));
 				}
 
 			break;
@@ -518,7 +518,11 @@ while (list($key,$val) = each($rawdata))
 		if ($pos !== false)
 			{
 			$var = getvarname(strtok($field,'#'));
-			if ($var != '[]') eval('$r'.$var.'=$block;');
+			if ($var != '[]')
+				{
+				$var = 'r'.$var;
+				$$var = $block;
+				}
 			}
 		}
 	}
@@ -630,7 +634,8 @@ while (list($key,$val)=each($array))
 
 			if ($field != '' && $itm != '')
 				{
-				eval('$r'.getvarname($field).'=$itm;');
+				$var = 'r'.getvarname($field);
+				$$var = $itm;
 				}
 
 			$val = trim(substr($val,0,$pos));
