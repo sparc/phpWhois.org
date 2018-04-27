@@ -1,3 +1,6 @@
+2018/04/27
+		- Source control moved to github
+
 2011/07/09
 		- html & cosmetic changes in examples
 		- released version 4.2.2
