@@ -394,17 +394,30 @@ return $r;
 
 //-------------------------------------------------------------------------
 
-function assign ($array, $vdef, $value)
-{
-if ($vdef == '') return $value;
+function assign_recursive($array, $parts, $value)
+	{
+	$key = array_shift($parts);
 
-$key = strtok($vdef,'.');
+	if (count($parts) == 0)
+		{
+		if (!$key) $array[] = $value;
+		else $array[$key] = $value;
+		}
+	else
+		{
+		if (!isset($array[$key])) $array[$key] = [];
+		$array[$key] = assign_recursive($array[$key], $parts, $value);
+		}
 
-if (empty($array[$key])) $array[$key] = array();
+	return $array;
+	}
 
-$array[$key] = assign($array[$key],strtok(''),$value);
-return $array;
-}
+//-------------------------------------------------------------------------
+
+function assign($array, $vdef, $value)
+	{
+	return assign_recursive($array, explode('.', $vdef), $value);
+	}
 
 //-------------------------------------------------------------------------
 
