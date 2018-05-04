@@ -181,7 +181,7 @@ handlers, those functions are stored on the following files:
   contains code to parse whois outputs in RPSL format, like this one.
   You could take a look at whois.at.php to see how you could use it:
 
-<<pre>
+<pre>
   domain:         nic.at
   registrant:     NAIV1117337-NICAT
   admin-c:        NAR567002-NICAT
