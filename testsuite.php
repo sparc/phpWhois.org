@@ -78,7 +78,7 @@ if (!empty($argv[1]) && isset($domains[$argv[1]]))
 
 // Test domains
 
-include('whois.main.php');
+include('src/whois.main.php');
 
 $whois = new Whois();
 
@@ -209,5 +209,3 @@ foreach($array2 as $key => $value)
 
 return !isset($difference) ? false : $difference;
 }
-
-?>
