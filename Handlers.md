@@ -29,93 +29,93 @@ has subkeys 'server' the whois server, 'port' the whois server port and
 regrinfo holds the information about the domain itself. It could have
 the following subkeys:
 
-	disclaimer
-	----------
-	Contains the disclaimer returned by the registry.
+disclaimer
+----------
+Contains the disclaimer returned by the registry.
 
-	registered
-	----------
-	Contains Yes or No and indicates if the domain or ip
-	address has been found (it exists).
+registered
+----------
+Contains Yes or No and indicates if the domain or ip
+address has been found (it exists).
 
-	domain
-	------
-	Only when dealing with domains. Could contain the
-	following subkeys:
+domain
+------
+Only when dealing with domains. Could contain the
+following subkeys:
 
-		name	-> domain name
-		desc	-> description of the domain
-		nserver	-> array where the key is the canonical name
-			   of each nameserver and the value is the
-			   ip adresss (if none) of the server.
-		status  -> status of the domain (registry dependant)
-		changed -> date of last change
-		created	-> creation date
-		expires -> expire date
-		sponsor	-> registry partner where the domain was
-			   registered
-		referer -> sponsor's URL
-		handle  -> domain handle
-		source  -> who gives this information
-		dnssec  -> domains has dnssec (boolean)
+	name	-> domain name
+	desc	-> description of the domain
+	nserver	-> array where the key is the canonical name
+			of each nameserver and the value is the
+			ip adresss (if none) of the server.
+	status  -> status of the domain (registry dependant)
+	changed -> date of last change
+	created	-> creation date
+	expires -> expire date
+	sponsor	-> registry partner where the domain was
+			registered
+	referer -> sponsor's URL
+	handle  -> domain handle
+	source  -> who gives this information
+	dnssec  -> domains has dnssec (boolean)
 
-	network
-	-------
-	Only when dealing with ip addresses. Could contain the
-	following subkeys:
+network
+-------
+Only when dealing with ip addresses. Could contain the
+following subkeys:
 
-		name	-> network/AS name		
-		inetnum	-> network ip address range
-		desc	-> network description
-		mnt-by	-> who provided that network
-		mnt-lower> who provided that network 
-		nserver -> name servers in listed order that
-			   provide inverse resolution for that net
-		status	-> status of the network (registry dependant)
-		remarks -> remarks provided by the registry
-                changed -> date of last change
-                created -> creation date
-                handle  -> network/AS handle
-                source  -> who gives this information
+	name	-> network/AS name		
+	inetnum	-> network ip address range
+	desc	-> network description
+	mnt-by	-> who provided that network
+	mnt-lower> who provided that network 
+	nserver -> name servers in listed order that
+			provide inverse resolution for that net
+	status	-> status of the network (registry dependant)
+	remarks -> remarks provided by the registry
+				 changed -> date of last change
+				 created -> creation date
+				 handle  -> network/AS handle
+				 source  -> who gives this information
 
-	AS
-	--
+AS
+--
 
-	Only when dealing with Autonomus systems, could contain
-	the same subkeys as network.
+Only when dealing with Autonomus systems, could contain
+the same subkeys as network.
 
-	owner,admin,tech,zone,billing,abuse
-	-----------------------------------
+owner,admin,tech,zone,billing,abuse
+-----------------------------------
 
-	All of these possible keys hold information about the different
-	contacts of the domain or ip address. They all could have the
-	same subkeys, that are:
+All of these possible keys hold information about the different
+contacts of the domain or ip address. They all could have the
+same subkeys, that are:
 
-		organization	-> organization name
-		name		-> organization responsible
-		type		-> type of contact
-		address		-> array containing the address, the
-				   keys of that array could be just
-				   numbers, could have predefined
-				   subkeys or could be amix of numbers
-				   and predefined subkeys. Predefined
-				   subkeys are street, city,
-				   state, pcode and country
-		phone		-> phone, could also be an array of
-				   phone numers
-		fax		-> fax, same behaviour as phone
-		email		-> email, same behaviour as phone
-		handle		-> contact handle
-		mnt-by		-> who provided that contact
-		created		-> creation date
-		changed		-> last change date
-		source		-> who provided that information
-		remarks		-> remarks
+	organization	-> organization name
+	name		-> organization responsible
+	type		-> type of contact
+	address		-> array containing the address, the
+				keys of that array could be just
+				numbers, could have predefined
+				subkeys or could be amix of numbers
+				and predefined subkeys. Predefined
+				subkeys are street, city,
+				state, pcode and country
+	phone		-> phone, could also be an array of
+				phone numers
+	fax		-> fax, same behaviour as phone
+	email		-> email, same behaviour as phone
+	handle		-> contact handle
+	mnt-by		-> who provided that contact
+	created		-> creation date
+	changed		-> last change date
+	source		-> who provided that information
+	remarks		-> remarks
 
-    When information is requested on ip addresses any of those
-	keys could be an array which will contain all data found on
-	different whois or rwhois servers (each owner, admin, tech,
-	etc ... found in each query).
+When information is requested on ip addresses any of those
+keys could be an array which will contain all data found on
+different whois or rwhois servers (each owner, admin, tech,
+etc ... found in each query).
 
 Not all handlers fill values in each of the keys defined by the
 Common Object Model as not all registries return the same amount
@@ -181,6 +181,7 @@ handlers, those functions are stored on the following files:
   contains code to parse whois outputs in RPSL format, like this one.
   You could take a look at whois.at.php to see how you could use it:
 
+<<pre>
   domain:         nic.at
   registrant:     NAIV1117337-NICAT
   admin-c:        NAR567002-NICAT
@@ -238,12 +239,14 @@ handlers, those functions are stored on the following files:
   nic-hdl:        GW502425-NICAT
   changed:        20001205 14:06:15
   source:         AT-DOM
+</pre>
 
 - generic_parser_b:
 
   contains code to parse whois outputs like this one, you could
   take a look at whois.neulevel.php to see how you could use it:
 
+<pre>
   Domain Name:                                 NIC.BIZ
   Domain ID:                                   D714-BIZ
   Sponsoring Registrar:                        REGISTRY REGISTRAR
@@ -310,12 +313,14 @@ handlers, those functions are stored on the following files:
   Domain Registration Date:                    Wed Nov 07 00:01:00 GMT 2001
   Domain Expiration Date:                      Sat Nov 06 23:59:00 GMT 2004
   Domain Last Updated Date:                    Fri Nov 07 18:59:11 GMT 2003 
+</pre>
 
 - get_blocks/get_contacts:
 
   contains code to parse whois outputs like this one, you could
   take a look at whois.ch.php to see how you could use it:
 
+<pre>
   Domain name:
   nic.ch
 
@@ -347,6 +352,7 @@ handlers, those functions are stored on the following files:
 
   Date of last modification:
   22.12.2003
+</pre>
 
 Credits
 -------
