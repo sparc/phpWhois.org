@@ -37,7 +37,7 @@ class gtld_handler extends WhoisClient
 	var $REG_FIELDS = array(
                         'Domain Name:' => 'regrinfo.domain.name',
                         'Registrar:' => 'regyinfo.registrar',
-                        'Whois Server:' => 'regyinfo.whois',
+                        'Registrar WHOIS Server:' => 'regyinfo.whois',
                         'Referral URL:' => 'regyinfo.referrer',
                         'Name Server:' => 'regrinfo.domain.nserver.',  // identical descriptors
 						'Updated Date:' => 'regrinfo.domain.changed',
