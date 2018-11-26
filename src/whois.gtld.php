@@ -37,7 +37,7 @@ class gtld_handler extends WhoisClient
 	var $REG_FIELDS = array(
                         'Domain Name:' => 'regrinfo.domain.name',
                         'Registrar:' => 'regyinfo.registrar',
-                        'Whois Server:' => 'regyinfo.whois',
+                        'Registrar WHOIS Server:' => 'regyinfo.whois',
                         'Referral URL:' => 'regyinfo.referrer',
                         'Name Server:' => 'regrinfo.domain.nserver.',  // identical descriptors
 						'Updated Date:' => 'regrinfo.domain.changed',
@@ -54,7 +54,7 @@ class gtld_handler extends WhoisClient
 	function parse($data, $query)
 		{
 		$this->Query = array();
-		$this->SUBVERSION = sprintf('%s-%s', $query['handler'], $this->HANDLER_VERSION);
+		$this->SUBVERSION = sprintf('%s-%s', get_class($this), $this->HANDLER_VERSION);
 		$this->result = generic_parser_b($data['rawdata'], $this->REG_FIELDS, 'dmy');
 
 		unset($this->result['registered']);
