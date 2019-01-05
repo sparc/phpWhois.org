@@ -1,7 +1,5 @@
 # phpWhois - base class to do whois queries with PHP
 
-### Introduction
-
 This package contains a Whois (RFC954) library for PHP. It allows
 a PHP program to create a Whois object, and obtain the output of
 a whois query with the Lookup function.
