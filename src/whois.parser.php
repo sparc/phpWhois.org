@@ -355,7 +355,7 @@ foreach ($rawdata as $key => $val)
 		$disok = false;
 		reset($items);
 
-		while (list($match, $field)=each($items))
+		foreach ($items as $match => $field)
 			{
 			$pos = strpos($val,$match);
 
@@ -624,7 +624,7 @@ if ($extra_items)
 	$items = $extra_items;
 	}
 
-while (list($key,$val)=each($array))
+foreach ($array as $key => $val)
 	{
 	$ok=true;
 
