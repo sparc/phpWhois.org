@@ -48,7 +48,7 @@ class fastdomain_handler
                   'domain.status' => 'Status:'
 		              );
 
-		while (list($key, $val) = each($data_str))
+		foreach ($data_str as $key => $val)
 			{
 			$faststr = strpos($val, ' (FAST-');
 			if ($faststr)
@@ -75,4 +75,3 @@ class fastdomain_handler
 		return $r;
 		}
 	}
-?>
