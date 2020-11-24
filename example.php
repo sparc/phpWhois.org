@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 header('Content-Type: text/html; charset=UTF-8');
 
-$out =  implode('', file('example.html'));
+$out = file_get_contents('example.html');
 
 $out = str_replace('{self}', $_SERVER['PHP_SELF'], $out);
 
@@ -37,10 +37,7 @@ if (isSet($_GET['query']))
 	{
 	$query = $_GET['query'];
 
-	if (!empty($_GET['output']))
-		$output = $_GET['output'];
-	else
-		$output = '';
+	$output = empty($_GET['output']) ? '' : $_GET['output'];
 
 	include_once('src/whois.main.php');
 	include_once('src/whois.utils.php');
@@ -109,11 +106,14 @@ if (isSet($_GET['query']))
 		}
 
 	$resout = str_replace('{result}', $winfo, $resout);
+	$out = str_replace('{ver}', $whois->CODE_VERSION, $out);
 	}
 else
+	{
 	$resout = '';
+	$out = str_replace('{ver}', '', $out);
+	}
 
-$out = str_replace('{ver}',$whois->CODE_VERSION,$out);
 exit(str_replace('{results}', $resout, $out));
 
 //-------------------------------------------------------------------------
