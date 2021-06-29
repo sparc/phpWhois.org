@@ -194,7 +194,7 @@ class WhoisClient {
 
 			while (!feof($ptr))
 				{
-				if (stream_select($r,$null,$null,$this->STIMEOUT))
+				if (@stream_select($r,$null,$null,$this->STIMEOUT)!==false)
 					{
 					$raw .= fgets($ptr, $this->BUFFER);
 					}
