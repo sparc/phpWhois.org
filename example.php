@@ -35,7 +35,7 @@ $resout = extract_block($out, 'results');
 
 if (isSet($_GET['query']))
 	{
-	$query = $_GET['query'];
+	$query = strip_tags($_GET['query']);
 
 	$output = empty($_GET['output']) ? '' : $_GET['output'];
 
