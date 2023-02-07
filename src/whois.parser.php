@@ -802,7 +802,7 @@ $date = str_replace('/',' ',$date);
 $date = str_replace("\t",' ',$date);
 
 $parts = explode(' ',$date);
-$res = false;
+$res = [];
 
 if ((strlen($parts[0]) == 8 || count($parts) == 1) && is_numeric($parts[0]))
 	{
@@ -838,7 +838,7 @@ else
 		}
 	}
 
-if (!$res) return $date;
+if (empty($res)) return $date;
 
 $ok = false;
 
