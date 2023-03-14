@@ -66,7 +66,7 @@ if (isSet($_GET['query']))
 		case 'object':
 			if ($whois->Query['status'] < 0)
 				{
-				$winfo = implode($whois->Query['errstr'],"\n<br></br>");
+				$winfo = html_escape_and_implode($whois->Query['errstr'],"\n<br></br>");
 				}
 			else
 				{
@@ -84,7 +84,7 @@ if (isSet($_GET['query']))
 			else
 				{
 				if (isset($whois->Query['errstr']))
-					$winfo = implode($whois->Query['errstr'],"\n<br></br>");
+					$winfo = html_escape_and_implode($whois->Query['errstr'],"\n<br></br>");
 				else
 					$winfo = 'Unexpected error';
 				}
@@ -97,11 +97,11 @@ if (isSet($_GET['query']))
 		default:
 			if(!empty($result['rawdata']))
 				{
-				$winfo .= '<pre>'.implode($result['rawdata'],"\n").'</pre>';
+				$winfo .= '<pre>'.html_escape_and_implode($result['rawdata'], "\n").'</pre>';
 				}
 			else
 				{
-				$winfo = implode($whois->Query['errstr'],"\n<br></br>");
+				$winfo = html_escape_and_implode($whois->Query['errstr'],"\n<br></br>");
 				}
 		}
 
@@ -117,6 +117,21 @@ else
 exit(str_replace('{results}', $resout, $out));
 
 //-------------------------------------------------------------------------
+
+function html_escape_and_implode( $pieces, $glue ) 
+{	
+	$escaped_pieces = array();
+
+	if (is_string($pieces)) {
+		$pieces = array($pieces);
+	}
+
+	foreach ($pieces as $piece) {
+		array_push($escaped_pieces, htmlspecialchars($piece, ENT_QUOTES));
+	}
+
+	return implode( $glue, $escaped_pieces );
+}
 
 function extract_block (&$plantilla,$mark,$retmark='')
 {
